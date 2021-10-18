@@ -44,13 +44,14 @@ def menu():
 
 
 def select_option():
-    return input("[>] Ingrese una opción: ")
+    return input("[>] ¿Qué ejercicio desea ver?: ")
 
 
-def routing(option):
-    option = str(option).lower()
+def routing(ej):
+    option = str(ej).lower()
     if option == "1":
         print("[1] Matriculas Argentinas")
+        ej1_patentes_argentinas()
     elif option == "2":
         print("[2] Numeros < 1900")
     elif option == "3":
@@ -89,8 +90,40 @@ def routing(option):
         print("[s] Salir")
     else:
         print('(x) ERROR: Elija una opcion válida del menu. \n')
-        routing(select_option())
-        
+        elegir()
+
+def elegir():
+    routing(select_option())
+
+
+def ej1_patentes_argentinas():
+    print("\n1. Las matrículas de las aeronaves en Argentina tienen el siguiente formato de acuerdo a su tipo (donde abc significa 3 letras mayúsculas y 123 3 dígitos):\n")
+    print("LV abc\t\tUso general")
+    print("LQ abc\t\tGubernamental")
+    print("LV-X 123\tExperimentales")
+    print("LV-S 123\tAeronave deportiva liviana")
+    print("LV-SX 123\tAeronave deportiva liviana experimental\n")
+    print("Matrículas válidas:\n\
+    LV-QWE\n\
+    LQ-ABE\n\
+    LV-X443\n\
+    LV-S586\n\
+    LV-SX334\n")
+    print("Matrículas inválidas:\n\
+    LA-123\n\
+    LX-ABC\n\
+    LV\n\
+    LV-344\n")
+    
+    print("Implemente una expresión regular para validar matrículas argentinas.\n")
+    print("SOLUCION: \\bL[VQ]-[A-Z][A-Z][A-Z]|LV-(X\d\d\d|S\d\d\d|SX\d\d\d)\\b \n")
+    print("\nExplicacion: usamos \\b para definir el principio y fin de la patente, usando como ancla los espacios y puntuacion.")
+    print("Tomamos en cuenta las similaridades, las diferencias como asi todos los casos que quedan excluidos.")
+    print("Desarrollamos el caso de las de uso general y las gubernamentales: L[QV]-[A-Z][A-Z][A-Z]")
+    print("Luego desarrollamos los 3 casos de las experimentales y livianas juntas: LV- más las opciones para cada una, separadas por un OR (|)\n\n")
+    elegir()
+
+
 
 # Programa principal
 welcome()
