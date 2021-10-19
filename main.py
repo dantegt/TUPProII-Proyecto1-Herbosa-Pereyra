@@ -9,25 +9,18 @@ def welcome():
     Bienvenido al desallorro de ejercicios de Expresiones regulares, Recursión, Colecciones
     e Intercambio de datos JSON XML.
     Elija un ejercicio, [m] ver el menu o ingrese [s] para Salir.
-    ---------------------------------------------------------------------------------------
-    """
+    ---------------------------------------------------------------------------------------"""
     print(output)
 
 def menu():
     menustr = """
-    -----------------------------------------
-    MENU DE EJERCICIOS
-    -----------------------------------------
-                
-        > Navegacion
-            [m] Ver Menu
-            [s] Salir
-
+    ---------------------------------------------------------------
+    MENU DE EJERCICIOS\t\t\t[m] Menu  [s] Salir
+    ---------------------------------------------------------------
         > Expresiones Regulares
             [1] Matriculas Argentinas
             [2] Numeros < 1900
             [3] EXTRA: Python Regex
-
         > Recursión
             [4] Codificar números
             [5] Aplanar lista de listas
@@ -36,19 +29,16 @@ def menu():
             [8] EXTRA: Fibonacci
             [9] EXTRA: Sumar digitos de N
             [0] EXTRA: Sumar valores de lista
-
         > Colecciones
             [a] map, filter y reduce
             [b] Pi desde suma de N terminos
-
         > Formato de intercambios de datos
             [c] Buscar Estacion
             [d] Ver Batería JSON
             [e] Ver Batería XML
             [j] Ver JSON
             [x] Ver XML
-
-    -----------------------------------------
+    ---------------------------------------------------------------
     """
     print(menustr)
 
@@ -102,6 +92,7 @@ def routing(ej):
     else:
         print('(x) ERROR: Elija una opcion válida del menu. \n')
         elegir()
+    
 
 def elegir():
     routing(select_option())
@@ -110,11 +101,11 @@ def elegir():
 def ej1_patentes_argentinas():
     patentes = """
     1. Las matrículas de las aeronaves en Argentina tienen el siguiente formato de acuerdo a su tipo (donde abc significa 3 letras mayúsculas y 123 3 dígitos):
-        LV abc\t\tUso general
-        LQ abc\t\tGubernamental
-        LV-X 123\tExperimentales
-        LV-S 123\tAeronave deportiva liviana
-        LV-SX 123\tAeronave deportiva liviana experimental
+        LV-abc\t\tUso general
+        LQ-abc\t\tGubernamental
+        LV-X123\t\tExperimentales
+        LV-S123\t\tAeronave deportiva liviana
+        LV-SX123\tAeronave deportiva liviana experimental
 
         Matrículas válidas:
         LV-QWE
@@ -164,3 +155,9 @@ welcome()
 menu()
 # Seleccion inicial
 routing(select_option())
+
+
+# To Do
+# ----------------------------------------------------
+# - Clear Screen
+# - Pausa antes de la solucion para los ej Expresion Regular
