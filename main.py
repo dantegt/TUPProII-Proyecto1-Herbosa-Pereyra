@@ -1,6 +1,8 @@
 # Programación II: Primer Proyecto / Herboza - Pereyra
 # Tecnicatura universitaria en Programación UTN FRBB - Octubre 2021
 
+import re
+import time
 
 def welcome():
     output = """
@@ -44,7 +46,7 @@ def menu():
 
 
 def select_option():
-    return input("[>] ¿Qué ejercicio desea ver?: ")
+    return input("[>] ¿Qué ejercicio desea ver? [m] Menu [s] Salir: ")
 
 
 def routing(ej):
@@ -57,6 +59,7 @@ def routing(ej):
         ej2_numeros_menor_1900()
     elif option == "3":
         print("[3] EXTRA: Python Regex")
+        ej3_extra_python_regex()
     elif option == "4":
         print("[4] Codificar números")
     elif option == "5":
@@ -87,8 +90,11 @@ def routing(ej):
         print("[x] Ver XML")
     elif option == "m":
         print("[m] Ver Menu")
+        menu()
+        elegir()
     elif option == "s":
         print("[s] Salir")
+        print("Gracias por utilizar nuestro programa :)")
     else:
         print('(x) ERROR: Elija una opcion válida del menu. \n')
         elegir()
@@ -99,7 +105,7 @@ def elegir():
 
 
 def ej1_patentes_argentinas():
-    patentes = """
+    enunciado = """
     1. Las matrículas de las aeronaves en Argentina tienen el siguiente formato de acuerdo a su tipo (donde abc significa 3 letras mayúsculas y 123 3 dígitos):
         LV-abc\t\tUso general
         LQ-abc\t\tGubernamental
@@ -121,7 +127,8 @@ def ej1_patentes_argentinas():
         LV-344
 
     Implemente una expresión regular para validar matrículas argentinas.
-
+    """
+    solucion = """
     SOLUCION: \\bL[VQ]-[A-Z][A-Z][A-Z]|LV-(X\d\d\d|S\d\d\d|SX\d\d\d)\\b 
 
     Explicacion: usamos \\b para definir el principio y fin de la patente, usando como ancla los espacios y puntuacion.
@@ -129,15 +136,18 @@ def ej1_patentes_argentinas():
     Desarrollamos el caso de las de uso general y las gubernamentales: L[QV]-[A-Z][A-Z][A-Z]
     Luego desarrollamos los 3 casos de las experimentales y livianas juntas: LV- más las opciones para cada una, separadas por un OR (|)
     """
-    print(patentes)
+    print(enunciado)
+    input("Presione [ENTER] para ver la solucion...")
+    print(solucion)
     elegir()
 
 
 
 def ej2_numeros_menor_1900():
-    menores = """
+    enunciado = """
     2. Diseñe una ER para validar cadenas de números naturales menores a 1900.
-
+    """
+    solucion = """
         SOLUCION: \\b(1[0-8]|[0-9])?[0-9]?[0-9]\\b
 
     Explicacion: usamos \\b para definir el principio y fin del numero, usando como ancla los espacios y puntuacion.
@@ -146,9 +156,59 @@ def ej2_numeros_menor_1900():
     Como el caso minimo es un numero de 1 cifra, el resto de las cifras las ponemos con ? porque pueden estar o no.
     """
 
-    print(menores)
+    print(enunciado)
+    input("Presione [ENTER] para ver la solucion...")
+    print(solucion)
     elegir()
 
+
+def ej3_extra_python_regex():
+    descripcion = """
+    Python tiene un paquete incorporado llamado re, que se puede importar para trabajar con expresiones regulares:
+    
+        import re
+
+    El módulo re ofrece un conjunto de funciones que nos permite buscar una cadena para una coincidencia:
+    
+        findall\t\tDevuelve una lista que contiene todas las coincidencias
+        search\t\tDevuelve un objeto Match si hubo alguna coincidencia
+        split\t\tDevuelve una lista donde la cadena se ha dividido en cada coincidencia
+        sub\t\tReemplaza una o más coincidencias con una cadena
+    """
+    research = """
+    Por ejemplo, vamos a utilizar la funcion re.search() para averiguar si el número que le pediremos que ingrese, es menor a 1900.
+    En código esto se implementaría:
+
+        re.search(r'\\b(1[0-8]|[0-9])?[0-9]?[0-9]\\b', input_usuario)
+    
+    Esta función se llama con 2 parametros: re.search([REGEX], [STRING]) donde [REGEX] es la expresión regular
+    y [STRING] es la cadena donde se buscará.
+
+    La r delante del [REGEX] evita que el interprete de Python la modifique en caso de usar caracteres de escape como \\
+    """
+    print(descripcion)
+    input("Presione [ENTER] para ver una demostracion...")
+    print(research)
+    input("Presione [ENTER] para probar re.search()...")
+    
+    while True:
+        print("\n[#] Numero ENTERO es menor a 1900?\n------------------------------------------")
+        numero = input("[>] Ingrese un numero ENTERO o [s] para salir: ")
+        if not numero.isnumeric():
+            if numero == "s":
+                break
+            else:
+                print("[x] Debe ingresar un numero ENTERO")
+
+
+        if re.search(r'\b(1[0-8]|[0-9])?[0-9]?[0-9]\b', numero):
+            print("[v] Ingresó un numero entero MENOR a 1900")
+        else:
+            print("[^] Ingreso un numero entero IGUAL O MAYOR a 1900")
+        time.sleep(1)
+
+    print("\n[!] Aprendimos un poco más sobre el módulo re!\n")
+    elegir()
 
 # Programa principal
 welcome()
