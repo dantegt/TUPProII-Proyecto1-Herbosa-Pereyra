@@ -1,4 +1,4 @@
-# Programación II: Primer Proyecto / Herboza - Pereyra
+# Programación II: Primer Proyecto / Herbosa - Pereyra
 # Tecnicatura universitaria en Programación UTN FRBB - Octubre 2021
 
 import re
@@ -24,7 +24,7 @@ def random_list_of_list():
 
 def welcome():
     output = """
-    Programación II: Primer Proyecto / Herboza - Pereyra
+    Programación II: Primer Proyecto / Herbosa - Pereyra
     ---------------------------------------------------------------------------------------
     Bienvenido al desallorro de ejercicios de Expresiones regulares, Recursión, Colecciones
     e Intercambio de datos JSON XML.
@@ -97,7 +97,8 @@ def routing(ej):
     elif option == "0":
         print("[0] EXTRA: Sumar valores de lista")
     elif option == "a":
-        print("[a] map, filter y reduce")
+        print("[a] map, filter y reduce",
+        map_filter_reduce())
     elif option == "b":
         print("[b] Pi desde suma de N terminos")
     elif option == "c":
@@ -182,6 +183,70 @@ def ej2_numeros_menor_1900():
     print(solucion)
     elegir()
 
+def map_filter_reduce():
+
+    solucion = """  
+                                           <MAP>
+                                        
+                La funcion MAP se utiliza para modificar secuencias de elementos.
+            map() recibe dos parametros, el primer parametro será una funcion
+            mientras que el segundo será una lista de elementos.
+                    
+                map() aplicara a cada elemento de la lista, la transformacion
+            que ordene la funcion indicada en el primer parametro.
+            Retornando finalmente una lista con los elementos transformados.
+        
+            ejemplo funcion map:
+        
+                                        <FILTER>
+                                        
+                La función filter() toma una secuencia de elementos y filtara
+            aquellos que cumplan con una determinada condicion que se le indique.
+            La funcion filter a diferencia de map, retorna una lista sin alterar 
+            los elementos originales.        
+            
+                Filter tambien recibe dos parametros, el primero sera
+            una funcion logica, el segundo, una secuencia de elementos.
+        
+            ejemplo funcion filter():
+        
+            
+                                        <REDUCE>
+                                        
+                La funcion reduce() tambien recibe dos parametros, una funcion que
+            indique el criterio para comparar los distintos elementos, y en segundo
+            lugar, la secuencia de elementos que es necesario procesar.
+        
+                reduce() efectua una comparacion en base a la funcion que se le indique,
+            tomando en primer instancia a los dos primeros elementos de la secuencia, 
+            el resultado de esa primer ejecucion sera el que se utilizara para comparar con
+            el elemento siguiente den la secuencia.
+                El proceso se repite de forma recurrente y de esta manera es como todos los terminos
+            son evaluados con el fin de obtener un ultimo y unico resultado.
+            
+                                     ---    ---  ||  ---    ---
+                                    | A |  | B | || | C |  | D |
+                                     ---    ---  ||  ---    ---
+                                        \  /          |
+                                         \/           |
+                                        +---+       +---+       ||   +---+
+                                        | A |       | C |       ||   | D |
+                                        +---+       +---+       ||   +---+
+                                            \       /                 /
+                                             \     /                 /
+                                              +---+              +---+           
+                                              | A |              | D |
+                                              +---+              +---+
+                                                    \           /
+                                                     \_________/
+                                                          |
+                                                        +---+
+                                                        | D |
+                                                        +---+
+                                                        
+            """
+
+    return solucion
 
 def ej3_extra_python_regex():
     descripcion = """
