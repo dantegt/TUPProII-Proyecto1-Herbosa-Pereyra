@@ -319,8 +319,9 @@ def ej4_codificar_numeros():
                 break
             else:
                 print("[x] Debe ingresar un numero ENTERO")
-        codificado = ej4_codificar(numero)
-        print("[=] Convertido: {codificado} \n".format(codificado=codificado))
+        else:
+            codificado = ej4_codificar(numero)
+            print("[=] Convertido: {codificado} \n".format(codificado=codificado))
     elegir()
 
 
