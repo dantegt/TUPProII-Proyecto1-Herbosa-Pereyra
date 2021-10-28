@@ -1,8 +1,19 @@
 # Programación II: Primer Proyecto / Herboza - Pereyra
 # Tecnicatura universitaria en Programación UTN FRBB - Octubre 2021
 
+from os import system, name
 import re
-import time
+from time import sleep
+
+
+def clear():
+    # Windows
+    if name == 'nt':
+        _ = system('cls')
+    # Linux y Mac
+    else:
+        _ = system('clear')
+
 
 def welcome():
     output = """
@@ -62,12 +73,14 @@ def routing(ej):
         ej3_extra_python_regex()
     elif option == "4":
         print("[4] Codificar números")
+        ej4_codificar_numeros()
     elif option == "5":
         print("[5] Aplanar lista de listas")
     elif option == "6":
         print("[6] Comparar 2 listas de num")
     elif option == "7":
         print("[7] División entera")
+        ej7_division_entera_sin_division()
     elif option == "8":
         print("[8] EXTRA: Fibonacci")
     elif option == "9":
@@ -191,6 +204,7 @@ def ej3_extra_python_regex():
     print(research)
     input("Presione [ENTER] para probar re.search()...")
     
+    # Loop para ejecutarlo multiples veces
     while True:
         print("\n[#] Numero ENTERO es menor a 1900?\n------------------------------------------")
         numero = input("[>] Ingrese un numero ENTERO o [s] para salir: ")
@@ -205,13 +219,93 @@ def ej3_extra_python_regex():
             print("[v] Ingresó un numero entero MENOR a 1900")
         else:
             print("[^] Ingreso un numero entero IGUAL O MAYOR a 1900")
-        time.sleep(1)
+        sleep(1)
 
     print("\n[!] Aprendimos un poco más sobre el módulo re!\n")
     elegir()
 
+
+def ej4_codificar_numeros():
+    enunciado = """
+    Codificar un número entero de la siguiente manera cada dígito par sustituirlo por 1, cada dígito impar
+    por 2. Puede pasar el número a otras representaciones para resolver el ejercicio.
+    Ejemplo: El número 46579222 deberá codificarse como 11222111.
+    """
+    solucion = """
+    Caso BASE: codificamos 1 cifra (retornamos 1 si es par y 2 si es impar)
+    Caso RECURSIVO: codificamos 1 cifra + codificamos el resto de la lista
+    """
+    print(enunciado)
+    input("Presione [ENTER] para ver la solución...")
+    print(solucion)
+    # Loop para ejecutarlo multiples veces
+    while True:
+        numero = input("[>] Ingrese un numero entero o [s] salir: ")
+        if not numero.isnumeric():
+            if numero == "s":
+                break
+            else:
+                print("[x] Debe ingresar un numero ENTERO")
+        codificado = ej4_codificar(numero)
+        print("[=] Convertido: {codificado} \n".format(codificado=codificado))
+    elegir()
+
+def ej4_codificar(str_numero):
+    # Caso Base: el str_numero se recibe vacío = False
+    if not str_numero:
+        return ''
+    
+    cifra_actual = int(str_numero[0])
+    if cifra_actual % 2 == 0:
+        codificado = '1'
+    else:
+        codificado = '2'
+    return codificado + ej4_codificar(str_numero[1:])
+
+
+def ej7_division_entera_sin_division():
+    enunciado = """
+    Realizar la división entera entre dos números enteros positivos A y B, (B ≠ 0).
+    Ayuda: Pensar la división entera como sucesión de restas
+    """
+    solucion = """
+    Caso BASE: Si A < B, la division entera de A/B => 0
+    Caso RECURSIVO: Division entera A/B + Division entera del resto
+    """
+    print(enunciado)
+    input("Presione [ENTER] para ver la solución...")
+    print(solucion)
+    # Loop para ejecutarlo multiples veces
+    while True:
+        a = input("[>] Ingrese un numero entero como DIVIDENDO A (A/b) - [s] salir: ")
+        if not a.isnumeric():
+            if a == "s":
+                break
+            else:
+                print("[x] El dividendo debe ser un numero ENTERO")
+        else:
+            b = input("[>] Ingrese un numero entero como DIVISOR B (a/B) - [s] salir: ")
+            if not b.isnumeric():
+                if b == "s":
+                    break
+                else:
+                    print("[x] El divisor debe ser un numero ENTERO")
+            else:
+                resultado = ej7_division_entera(int(a), int(b))
+                print("[=] Division entera: {resultado} \n".format(resultado=resultado))
+    elegir()
+
+def ej7_division_entera(a, b):
+    # Caso base:  A < B => 0
+    if a < b:
+        return 0
+    resto = a - b
+    return 1 + ej7_division_entera(resto, b)
+
+# ----------------------------------------------------
 # Programa principal
 welcome()
+sleep(2)
 menu()
 # Seleccion inicial
 routing(select_option())
@@ -219,5 +313,5 @@ routing(select_option())
 
 # To Do
 # ----------------------------------------------------
-# - Clear Screen
-# - Pausa antes de la solucion para los ej Expresion Regular
+# 🆖 Clear Screen: No funciona bien en Pycharm
+# 🆗 Pausa antes de la solucion para los ej Expresion Regular
