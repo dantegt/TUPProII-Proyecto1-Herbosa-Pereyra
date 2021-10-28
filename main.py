@@ -1,8 +1,9 @@
 # Programación II: Primer Proyecto / Herboza - Pereyra
 # Tecnicatura universitaria en Programación UTN FRBB - Octubre 2021
 
-from os import system, name
 import re
+import random
+from os import system, name
 from time import sleep
 
 
@@ -15,6 +16,12 @@ def clear():
         _ = system('clear')
 
 
+def random_list_of_list():
+    ldl = []
+    for i in range(random.randint(0,5)):
+        ldl.append(random.sample(range(10,30), random.randint(1,4)))
+    return ldl
+
 def welcome():
     output = """
     Programación II: Primer Proyecto / Herboza - Pereyra
@@ -24,6 +31,7 @@ def welcome():
     Elija un ejercicio, [m] ver el menu o ingrese [s] para Salir.
     ---------------------------------------------------------------------------------------"""
     print(output)
+
 
 def menu():
     menustr = """
@@ -76,6 +84,7 @@ def routing(ej):
         ej4_codificar_numeros()
     elif option == "5":
         print("[5] Aplanar lista de listas")
+        ej5_aplanar_lista_de_listas()
     elif option == "6":
         print("[6] Comparar 2 listas de num")
     elif option == "7":
@@ -153,7 +162,6 @@ def ej1_patentes_argentinas():
     input("Presione [ENTER] para ver la solucion...")
     print(solucion)
     elegir()
-
 
 
 def ej2_numeros_menor_1900():
@@ -250,6 +258,7 @@ def ej4_codificar_numeros():
         print("[=] Convertido: {codificado} \n".format(codificado=codificado))
     elegir()
 
+
 def ej4_codificar(str_numero):
     # Caso Base: el str_numero se recibe vacío = False
     if not str_numero:
@@ -261,6 +270,39 @@ def ej4_codificar(str_numero):
     else:
         codificado = '2'
     return codificado + ej4_codificar(str_numero[1:])
+
+
+def ej5_aplanar_lista_de_listas():
+    enunciado = """
+    Convertir una lista de listas en una sola lista que tenga todos los elementos de las listas originales.
+    Ejemplo: Si L = [ [1, 2, 3], [4, 5, 6], [7], [8] ] la lista resultante deberá ser L2 = [1,2,3,4,5,6,7,8]
+    """
+    solucion = """
+    Caso BASE: Lista de listas  = []
+    Caso RECURSIVO: Aplanar 1 elemento de la lista + Aplanar el resto de la lista
+    """
+    print(enunciado)
+    input("Presione [ENTER] para ver la solución...")
+    print(solucion)
+    # Loop para ejecutarlo multiples veces
+    while True:
+        ldl = random_list_of_list()
+        print("\n[+] Lista de listas: {ldl}".format(ldl=ldl))
+        resultado = ej5_aplanar(ldl)
+        print("[=] Lista aplanada: {resultado} \n".format(resultado=resultado))
+
+        a = input("[>] Presione ENTER para ver otra lista - [s] salir: ")
+        if a == "s":
+            break
+    elegir()
+
+
+def ej5_aplanar(lista):
+    # Caso base:  lista = []
+    if lista == []:
+        return []
+    pop = lista.pop()
+    return ej5_aplanar(lista) + pop
 
 
 def ej7_division_entera_sin_division():
@@ -294,6 +336,7 @@ def ej7_division_entera_sin_division():
                 resultado = ej7_division_entera(int(a), int(b))
                 print("[=] Division entera: {resultado} \n".format(resultado=resultado))
     elegir()
+
 
 def ej7_division_entera(a, b):
     # Caso base:  A < B => 0
