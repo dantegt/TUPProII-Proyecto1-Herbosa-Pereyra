@@ -87,6 +87,7 @@ def routing(ej):
         ej5_aplanar_lista_de_listas()
     elif option == "6":
         print("[6] Comparar 2 listas de num")
+        ej6_comparar_lista()
     elif option == "7":
         print("[7] División entera")
         ej7_division_entera_sin_division()
@@ -370,6 +371,56 @@ def ej5_aplanar(lista):
     pop = lista.pop()
     return ej5_aplanar(lista) + pop
 
+def ej6_comparar_lista():
+    enunciado = """
+    Decidir si dos listas de números enteros son iguales
+    """
+    solucion = """
+    Caso BASE: Ambas listas están vacias.
+    Caso RECURSIVO: Comparamos numero por numero comparar toda la cadena.
+    """
+    print(enunciado)
+    print(solucion)
+
+    lista_uno = [1,2,3,4,5,6]
+    lista_dos = [1,2,3,4,5,6]
+
+    print(lista_uno)
+    print(lista_dos)
+
+    def comparar_lista(primer_lista,segunda_lista):
+        # Caso base:  lista = []
+        if primer_lista == [] and primer_lista == segunda_lista:
+            return []
+        else:
+            if primer_lista[0] == segunda_lista[0]:
+                return comparar_lista(primer_lista[1:],segunda_lista[1:])
+
+     #ejemplo con listas iguales
+    comparacion = comparar_lista(lista_uno,lista_dos)
+
+    if comparar_lista(lista_uno,lista_dos) == []:
+        print("las listas son iguales.")
+    else:
+        print("las listas son diferentes.")
+
+    #ejemplo con listas distintas.
+
+    lista_dos = [13,22,3]
+
+    print(lista_uno)
+    print(lista_dos)
+
+    if comparar_lista(lista_uno,lista_dos) == []:
+        print("las listas son iguales.")
+    else:
+        print("las listas son diferentes.")
+
+        #aca tengo que buscarle la vuelta para no repetir codigo.
+
+
+
+
 
 def ej7_division_entera_sin_division():
     enunciado = """
@@ -423,4 +474,5 @@ routing(select_option())
 # To Do
 # ----------------------------------------------------
 # 🆖 Clear Screen: No funciona bien en Pycharm
+# 🆖 Emprolijar ejercicio 6, insertarlo al menu de navegacion.
 # 🆗 Pausa antes de la solucion para los ej Expresion Regular
