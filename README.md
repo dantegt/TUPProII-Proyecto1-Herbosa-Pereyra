@@ -1,4 +1,4 @@
-# Programación II: Primer Proyecto / Herboza - Pereyra
+# Programación II: Primer Proyecto / Herbosa - Pereyra
 Tecnicatura universitaria en Programación UTN FRBB - Octubre 2021
 - Fecha de entrega: 1 de Noviembre de 2021
 
