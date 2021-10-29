@@ -54,11 +54,7 @@ def menu():
             [a] map, filter y reduce
             [b] Pi desde suma de N terminos
         > Formato de intercambios de datos
-            [c] Buscar Estacion
-            [d] Ver Batería JSON
-            [e] Ver Batería XML
-            [j] Ver JSON
-            [x] Ver XML
+            [c] Estaciones Meteorológicas
     ---------------------------------------------------------------
     """
     print(menustr)
@@ -98,20 +94,12 @@ def routing(ej):
     elif option == "0":
         print("[0] EXTRA: Sumar valores de lista")
     elif option == "a":
-        print("[a] map, filter y reduce",
-        map_filter_reduce())
+        print("[a] map, filter y reduce")
+        eja_map_filter_reduce()
     elif option == "b":
         print("[b] Pi desde suma de N terminos")
     elif option == "c":
-        print("[c] Buscar Estacion")
-    elif option == "d":
-        print("[d] Ver Batería JSON")
-    elif option == "E":
-        print("[e] Ver Batería XML")
-    elif option == "j":
-        print("[j] Ver JSON")
-    elif option == "x":
-        print("[x] Ver XML")
+        print("[c] Formatos de Intercambio de Datos: Estaciones Meteorológicas")
     elif option == "m":
         print("[m] Ver Menu")
         menu()
@@ -184,70 +172,6 @@ def ej2_numeros_menor_1900():
     print(solucion)
     elegir()
 
-def map_filter_reduce():
-
-    solucion = """  
-                                           <MAP>
-                                        
-                La funcion MAP se utiliza para modificar secuencias de elementos.
-            map() recibe dos parametros, el primer parametro será una funcion
-            mientras que el segundo será una lista de elementos.
-                    
-                map() aplicara a cada elemento de la lista, la transformacion
-            que ordene la funcion indicada en el primer parametro.
-            Retornando finalmente una lista con los elementos transformados.
-        
-            ejemplo funcion map:
-        
-                                        <FILTER>
-                                        
-                La función filter() toma una secuencia de elementos y filtara
-            aquellos que cumplan con una determinada condicion que se le indique.
-            La funcion filter a diferencia de map, retorna una lista sin alterar 
-            los elementos originales.        
-            
-                Filter tambien recibe dos parametros, el primero sera
-            una funcion logica, el segundo, una secuencia de elementos.
-        
-            ejemplo funcion filter():
-        
-            
-                                        <REDUCE>
-                                        
-                La funcion reduce() tambien recibe dos parametros, una funcion que
-            indique el criterio para comparar los distintos elementos, y en segundo
-            lugar, la secuencia de elementos que es necesario procesar.
-        
-                reduce() efectua una comparacion en base a la funcion que se le indique,
-            tomando en primer instancia a los dos primeros elementos de la secuencia, 
-            el resultado de esa primer ejecucion sera el que se utilizara para comparar con
-            el elemento siguiente den la secuencia.
-                El proceso se repite de forma recurrente y de esta manera es como todos los terminos
-            son evaluados con el fin de obtener un ultimo y unico resultado.
-            
-                                     ---    ---  ||  ---    ---
-                                    | A |  | B | || | C |  | D |
-                                     ---    ---  ||  ---    ---
-                                        \  /          |
-                                         \/           |
-                                        +---+       +---+       ||   +---+
-                                        | A |       | C |       ||   | D |
-                                        +---+       +---+       ||   +---+
-                                            \       /                 /
-                                             \     /                 /
-                                              +---+              +---+           
-                                              | A |              | D |
-                                              +---+              +---+
-                                                    \           /
-                                                     \_________/
-                                                          |
-                                                        +---+
-                                                        | D |
-                                                        +---+
-                                                        
-            """
-
-    return solucion
 
 def ej3_extra_python_regex():
     descripcion = """
@@ -371,6 +295,7 @@ def ej5_aplanar(lista):
     pop = lista.pop()
     return ej5_aplanar(lista) + pop
 
+
 def ej6_comparar_lista():
     enunciado = """
     Decidir si dos listas de números enteros son iguales
@@ -416,10 +341,7 @@ def ej6_comparar_lista():
     else:
         print("las listas son diferentes.")
 
-        #aca tengo que buscarle la vuelta para no repetir codigo.
-
-
-
+    #aca tengo que buscarle la vuelta para no repetir codigo.
 
 
 def ej7_division_entera_sin_division():
@@ -461,6 +383,199 @@ def ej7_division_entera(a, b):
         return 0
     resto = a - b
     return 1 + ej7_division_entera(resto, b)
+
+
+def ej8_calcular_fibonacci():
+    enunciado = """
+    Calcular fibonacci para n terminos con un algoritmo recursivo
+    """
+    solucion = """
+    Caso BASE: 
+    Caso RECURSIVO:
+    """
+    print(enunciado)
+    input("Presione [ENTER] para ver la solución...")
+    print(solucion)
+
+
+def ej9_sumar_digitos():
+    enunciado = """
+    Sumar los digitos de un numero entero con un algoritmo recursivo
+    """
+    solucion = """
+    Caso BASE: 
+    Caso RECURSIVO:
+    """
+    print(enunciado)
+    input("Presione [ENTER] para ver la solución...")
+    print(solucion)
+
+
+def ej0_sumar_valores_de_lista():
+    enunciado = """
+    Sumar valores de una lista con un algoritmo recursivo
+    """
+    solucion = """
+    Caso BASE: 
+    Caso RECURSIVO:
+    """
+    print(enunciado)
+    input("Presione [ENTER] para ver la solución...")
+    print(solucion)
+
+
+def eja_map_filter_reduce():
+    enunciado = """
+    Explicar en pocas palabras y utilizando diagramas las operaciones de map, filter y reduce.
+    Proponga ejemplos de cada uno (conceptuales, no necesariamente en código).
+    """
+
+    explica_map = """  
+                                           <MAP>
+                                        
+                La funcion MAP se utiliza para modificar secuencias de elementos.
+            map() recibe dos parametros, el primer parametro será una funcion
+            mientras que el segundo será una lista de elementos.
+                    
+                map() aplicara a cada elemento de la lista, la transformacion
+            que ordene la funcion indicada en el primer parametro.
+            Retornando finalmente una lista con los elementos transformados.
+        
+            ejemplo funcion map:
+    """
+    explica_filter = """  
+                                        <FILTER>
+                                        
+                La función filter() toma una secuencia de elementos y filtara
+            aquellos que cumplan con una determinada condicion que se le indique.
+            La funcion filter a diferencia de map, retorna una lista sin alterar 
+            los elementos originales.        
+            
+                Filter tambien recibe dos parametros, el primero sera
+            una funcion logica, el segundo, una secuencia de elementos.
+        
+            ejemplo funcion filter():
+    """
+    explica_reduce = """  
+                                        <REDUCE>
+                                        
+                La funcion reduce() tambien recibe dos parametros, una funcion que
+            indique el criterio para comparar los distintos elementos, y en segundo
+            lugar, la secuencia de elementos que es necesario procesar.
+        
+                reduce() efectua una comparacion en base a la funcion que se le indique,
+            tomando en primer instancia a los dos primeros elementos de la secuencia, 
+            el resultado de esa primer ejecucion sera el que se utilizara para comparar con
+            el elemento siguiente den la secuencia.
+                El proceso se repite de forma recurrente y de esta manera es como todos los terminos
+            son evaluados con el fin de obtener un ultimo y unico resultado.
+            
+                                     ---    ---  ||  ---    ---
+                                    | A |  | B | || | C |  | D |
+                                     ---    ---  ||  ---    ---
+                                        \  /          |
+                                         \/           |
+                                        +---+       +---+       ||   +---+
+                                        | A |       | C |       ||   | D |
+                                        +---+       +---+       ||   +---+
+                                            \       /                 /
+                                             \     /                 /
+                                              +---+              +---+           
+                                              | A |              | D |
+                                              +---+              +---+
+                                                    \           /
+                                                     \_________/
+                                                          |
+                                                        +---+
+                                                        | D |
+                                                        +---+
+                                                        
+    """
+
+    print(enunciado)
+    while True:
+        funcion = input("[>] Que funcion desea ver? [m] map [f] filter [r] reduce [s] salir: ")
+        if funcion == 'm':
+            print(explica_map)
+        elif funcion == 'f':
+            print(explica_filter)
+        elif funcion == 'r':
+            print(explica_reduce)
+        elif funcion == 's':
+            break
+        else:
+            print("[x] Debe ingresar una opcion válida")
+    elegir()
+
+
+def ejb_calcular_pi_aprox():
+    enunciado = """
+    Implemente un algoritmo sin usar estructuras repetitivas para calcular una aproximación de pi con N términos.
+    Utilizando la sumatoria de i terminos con la formula (4*(-1)^i) / ((2*i)+1)
+    """
+    solucion = """
+    Solucion descrita
+    """
+    print(enunciado)
+    input("Presione [ENTER] para ver la solución...")
+    print(solucion)
+
+
+def ejb_calcular_pi_aprox():
+    enunciado = """
+    Implemente un algoritmo sin usar estructuras repetitivas para calcular una aproximación de pi con N términos.
+    Utilizando la sumatoria de i terminos con la formula (4*(-1)^i) / ((2*i)+1)
+    """
+    solucion = """
+    Solucion descrita
+    """
+    print(enunciado)
+    input("Presione [ENTER] para ver la solución...")
+    print(solucion)
+
+
+def ejc_estaciones_meteorologicas():
+    enunciado = """
+    Se necesita diseñar un formato para intercambiar datos de estaciones meteorológicas. El sistema tiene N estaciones cada una
+    con su localización (latitud y longitud) y un nombre alfanumérico. Las estaciones pueden tener diferentes combinaciones de
+    sensores entre: humedad, dirección del viento, velocidad del viento, temperatura (que puede estar en grados celsius o fahrenheit)
+    y presión atmosférica. No todas las estaciones tienen todos los sensores, pero al menos tienen uno. Los sensores deben almacenar
+    por separado la magnitud leída de su unidad de medición.Además cada estación almacena el voltaje en milivolts de su batería una vez
+    por segundo y el formato de archivo debe mantener las últimas 20 mediciones.
+
+    Diseñar un formato XML y uno JSON para intercambiar datos del sistema. Cree dos documentos para almacenar la misma información.
+    El formato debería ser eficiente para computar lo siguiente:
+
+    1. A partir del nombre de la estación, computar la cantidad de sensores disponible y mostrar por pantalla los diferentes sensores,
+    cada uno deberá mostrar el tipo y la variable medida, por ejemplo:
+        Cantidad de sensores de la estación “Sur10”: 3
+        Temperatura: 10०C
+        Humedad: 1013 hpa
+        Velocidad Viento: 30km/h
+
+    2. Calcular cuál es la estación con menos batería, es decir, la estación con menor valor promedio de voltaje.
+
+    Elija solo una representación (XML o JSON) para implementar las soluciones de 1 y 2.
+    Opcional: Implemente la solución utilizando la representación restante.
+    """
+    solucion = """
+    Solucion descrita
+    """
+    print(enunciado)
+    input("Presione [ENTER] para ver la solución...")
+    print(solucion)
+    while True:
+        option = input("[>] Que desea ver? [1] Buscar estacion [2] Ver Bateria [3] Ver Datos - [s] salir: ")
+        if option == "c":
+            print("[c] Buscar Estacion")
+        elif option == "d":
+            print("[d] Ver Batería JSON")
+        elif option == "E":
+            print("[e] Ver Batería XML")
+        elif option == "j":
+            print("[j] Ver JSON")
+        elif option == "x":
+            print("[x] Ver XML")
 
 # ----------------------------------------------------
 # Programa principal
