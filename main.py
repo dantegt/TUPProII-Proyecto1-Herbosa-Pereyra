@@ -100,6 +100,7 @@ def routing(ej):
         print("[b] Pi desde suma de N terminos")
     elif option == "c":
         print("[c] Formatos de Intercambio de Datos: Estaciones Meteorológicas")
+        ejc_estaciones_meteorologicas()
     elif option == "m":
         print("[m] Ver Menu")
         menu()
@@ -540,42 +541,74 @@ def ejc_estaciones_meteorologicas():
     con su localización (latitud y longitud) y un nombre alfanumérico. Las estaciones pueden tener diferentes combinaciones de
     sensores entre: humedad, dirección del viento, velocidad del viento, temperatura (que puede estar en grados celsius o fahrenheit)
     y presión atmosférica. No todas las estaciones tienen todos los sensores, pero al menos tienen uno. Los sensores deben almacenar
-    por separado la magnitud leída de su unidad de medición.Además cada estación almacena el voltaje en milivolts de su batería una vez
-    por segundo y el formato de archivo debe mantener las últimas 20 mediciones.
-
+    por separado la magnitud leída de su unidad de medición.Además cada estación almacena el voltaje en milivolts de su batería una
+    vez por segundo y el formato de archivo debe mantener las últimas 20 mediciones.
     Diseñar un formato XML y uno JSON para intercambiar datos del sistema. Cree dos documentos para almacenar la misma información.
-    El formato debería ser eficiente para computar lo siguiente:
+    """
+    submenu = """
+    ------------------------------------------------
+    Menu
+    ------------------------------------------------
+    Se le consultara que base desea usar:
+        [j] JSON
+        [x] XML
 
+    Y luego podrá elegir de las siguientes acciones:
+        [1] Buscar estacion
+        [2] Ver estacion con menos bateria
+        [3] Ver archivo
+    -----------------------------------------------
+    """
+    enunciado1 = """
     1. A partir del nombre de la estación, computar la cantidad de sensores disponible y mostrar por pantalla los diferentes sensores,
     cada uno deberá mostrar el tipo y la variable medida, por ejemplo:
         Cantidad de sensores de la estación “Sur10”: 3
         Temperatura: 10०C
         Humedad: 1013 hpa
         Velocidad Viento: 30km/h
-
+    """
+    enunciado2 = """
     2. Calcular cuál es la estación con menos batería, es decir, la estación con menor valor promedio de voltaje.
 
     Elija solo una representación (XML o JSON) para implementar las soluciones de 1 y 2.
     Opcional: Implemente la solución utilizando la representación restante.
     """
-    solucion = """
-    Solucion descrita
-    """
     print(enunciado)
-    input("Presione [ENTER] para ver la solución...")
-    print(solucion)
+    input("Presione [ENTER] para ver la continuar...")
+    print(submenu)
+
     while True:
-        option = input("[>] Que desea ver? [1] Buscar estacion [2] Ver Bateria [3] Ver Datos - [s] salir: ")
-        if option == "c":
-            print("[c] Buscar Estacion")
-        elif option == "d":
-            print("[d] Ver Batería JSON")
-        elif option == "E":
-            print("[e] Ver Batería XML")
-        elif option == "j":
-            print("[j] Ver JSON")
+        # Elige un formato de base de datos
+        option = input("[>] Que formato quiere usar? [j] JSON [x] XML - [s] salir: ")
+        if option == "j":
+            print("[j] Ver JSON\n")
+            formato = "JSON"
         elif option == "x":
-            print("[x] Ver XML")
+            print("[x] Ver XML\n")
+            formato = "XML"
+        elif option == "s":
+            print("[s] Saliendo de Estaciones Meteorologicas...\n")
+            break
+        else:
+            print("[!] ERROR: Ingrese una opcion valida!\n")
+        
+        if option == "j" or option == "x":
+            # Elegir accion
+            while True:
+                action = input("[>] [{formato}] Que desea hacer? [1] Buscar estacion [2] Ver Bateria [3] Ver Base - [s] salir: ".format(formato=formato))
+                if action == "1":
+                    print("[1] [{formato}] Buscar Estacion\n".format(formato=formato))
+                elif action == "2":
+                    print("[2] [{formato}] Ver Estación con menos Batería\n".format(formato=formato))
+                elif action == "3":
+                    print("[3] [{formato}] Ver Base de Datos\n".format(formato=formato))
+                elif action == "s":
+                    print("[s] [{formato}] Saliendo de acciones\n".format(formato=formato))
+                    break
+                else:
+                    print("[!] ERROR: Ingrese una opcion valida!\n")
+    elegir()
+
 
 # ----------------------------------------------------
 # Programa principal
