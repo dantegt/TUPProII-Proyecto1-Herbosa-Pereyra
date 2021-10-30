@@ -25,19 +25,16 @@ def random_list_of_list():
 def welcome():
     output = """
     Programación II: Primer Proyecto / Herbosa - Pereyra
-    ---------------------------------------------------------------------------------------
-    Bienvenido al desallorro de ejercicios de Expresiones regulares, Recursión, Colecciones
-    e Intercambio de datos JSON XML.
-    Elija un ejercicio, [m] ver el menu o ingrese [s] para Salir.
-    ---------------------------------------------------------------------------------------"""
+    ----------------------------------------------------------------
+    Bienvenido al desallorro de ejercicios de Expresiones regulares,
+    Recursión, Colecciones e Intercambio de datos JSON XML."""
     print(output)
 
 
 def menu():
     menustr = """
-    ---------------------------------------------------------------
-    MENU DE EJERCICIOS\t\t\t[m] Menu  [s] Salir
-    ---------------------------------------------------------------
+    \tMENU DE EJERCICIOS\t\t\t[m] Menu  [s] Salir
+    ----------------------------------------------------------------
         > Expresiones Regulares
             [1] Matriculas Argentinas
             [2] Numeros < 1900
@@ -55,13 +52,13 @@ def menu():
             [b] Pi desde suma de N terminos
         > Formato de intercambios de datos
             [c] Estaciones Meteorológicas
-    ---------------------------------------------------------------
+    ----------------------------------------------------------------
     """
     print(menustr)
 
 
 def select_option():
-    return input("[>] ¿Qué ejercicio desea ver? [m] Menu [s] Salir: ")
+    return input("\n[>] ¿Qué ejercicio desea ver? [m] Menu [s] Salir: ")
 
 
 def routing(ej):
@@ -98,6 +95,7 @@ def routing(ej):
         eja_map_filter_reduce()
     elif option == "b":
         print("[b] Pi desde suma de N terminos")
+        ejb_calcular_pi_aprox()
     elif option == "c":
         print("[c] Formatos de Intercambio de Datos: Estaciones Meteorológicas")
         ejc_estaciones_meteorologicas()
@@ -107,9 +105,10 @@ def routing(ej):
         elegir()
     elif option == "s":
         print("[s] Salir")
-        print("Gracias por utilizar nuestro programa :)")
+        print("[!] Gracias por utilizar nuestro programa")
+        print("[#] Ezequiel Herbosa / Dante Pereyra - 2021")
     else:
-        print('(x) ERROR: Elija una opcion válida del menu. \n')
+        print('[x] ERROR: Elija una opcion válida del menu. \n')
         elegir()
     
 
@@ -515,25 +514,29 @@ def ejb_calcular_pi_aprox():
     Utilizando la sumatoria de i terminos con la formula (4*(-1)^i) / ((2*i)+1)
     """
     solucion = """
-    Solucion descrita
-    """
+    Utilizando la función map(), podemos procesar una lista de 0 hasta n terminos con una funcion lambda que procese
+    la formula (4*(-1)^i) / ((2*i)+1) y luego sumar todos los elementos de la lista con la funcion sum()"""
+
     print(enunciado)
     input("Presione [ENTER] para ver la solución...")
     print(solucion)
 
+    while True:
+        print("\n[𝝅] Vamos a calcular el numero Pi a través de una sumatoria de términos!")
+        n = int(input("[>] Ingrese la cantidad de términos de la sumatoria: "))
 
-def ejb_calcular_pi_aprox():
-    enunciado = """
-    Implemente un algoritmo sin usar estructuras repetitivas para calcular una aproximación de pi con N términos.
-    Utilizando la sumatoria de i terminos con la formula (4*(-1)^i) / ((2*i)+1)
-    """
-    solucion = """
-    Solucion descrita
-    """
-    print(enunciado)
-    input("Presione [ENTER] para ver la solución...")
-    print(solucion)
+        lista = [*range(0, n+1)]
+        mapeado = list(map(lambda i: (4*(-1)**i) / ((2*i)+1), lista))
+        sumatoria = sum(mapeado)
 
+        print("Lista: " + str(lista))
+        print("Map(): " + str(mapeado))
+        print("Sum(): " + str(sumatoria))
+
+        otra_vez = input("[?] Quiere probar nuevamente? [s] Si [n] No: ")
+        if otra_vez == 'n':
+            break
+    elegir()
 
 def ejc_estaciones_meteorologicas():
     enunciado = """
@@ -613,7 +616,6 @@ def ejc_estaciones_meteorologicas():
 # ----------------------------------------------------
 # Programa principal
 welcome()
-sleep(2)
 menu()
 # Seleccion inicial
 routing(select_option())
