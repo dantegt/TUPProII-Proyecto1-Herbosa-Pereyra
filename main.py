@@ -91,7 +91,9 @@ def routing(ej):
         print("[9] EXTRA: Sumar digitos de N")
         ej9_sumar_digitos()
     elif option == "0":
-        print("[0] EXTRA: Sumar valores de lista")
+        print("[0] EXTRA: Sumar elementos de lista")
+        ej0_sumar_valores_de_lista()
+
     elif option == "a":
         print("[a] map, filter y reduce")
         eja_map_filter_reduce()
@@ -454,12 +456,31 @@ def ej0_sumar_valores_de_lista():
     Sumar valores de una lista con un algoritmo recursivo
     """
     solucion = """
-    Caso BASE: 
-    Caso RECURSIVO:
+    Caso BASE: La lista, es una lista vacia.
+    Caso RECURSIVO: sumamos el primer elemento de la lista, con el primer elemento de la lista restante.
     """
     print(enunciado)
     input("Presione [ENTER] para ver la solución...")
     print(solucion)
+
+
+    def sumar_elementos_lista(lista):
+        if lista == []:
+            return 0
+        else:
+            return lista[0] + sumar_elementos_lista(lista[1:])
+
+    print("Ejemplo: sumar_elementos_lista([1,1,1,1])")
+    print(sumar_elementos_lista([1, 1, 1, 1]))
+    print("")
+    input("Presione [ENTER] para ver el sigiuiente ejemplo...\n")
+    print("Ejemplo: sumar_elementos_lista([1,2,3,4,5])")
+    print(sumar_elementos_lista([1,2,3,4,5]))
+    print("")
+    input("Presione [ENTER] para ver el sigiuiente ejemplo...\n")
+    print("Ejemplo: sumar_elementos_lista([7,5,9])")
+    print(sumar_elementos_lista([7,5,9]))
+
 
 
 def eja_map_filter_reduce():
