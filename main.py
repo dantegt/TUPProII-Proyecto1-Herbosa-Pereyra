@@ -89,6 +89,7 @@ def routing(ej):
         ej8_calcular_fibonacci()
     elif option == "9":
         print("[9] EXTRA: Sumar digitos de N")
+        ej9_sumar_digitos()
     elif option == "0":
         print("[0] EXTRA: Sumar valores de lista")
     elif option == "a":
@@ -423,12 +424,29 @@ def ej9_sumar_digitos():
     Sumar los digitos de un numero entero con un algoritmo recursivo
     """
     solucion = """
-    Caso BASE: 
-    Caso RECURSIVO:
+    Caso BASE: El numero tiene un solo digito (n<10).
+    Caso RECURSIVO: aplicando division y modulo descomponemos el numero, sumamos la unidad obtenida y el resto.
     """
     print(enunciado)
     input("Presione [ENTER] para ver la solución...")
     print(solucion)
+
+    while True:
+        def sumar_digitos(x):
+            if x < 10:
+                return x
+            else:
+                return int(sumar_digitos(x / 10) + sumar_digitos(x % 10))
+
+        x = int(input("ingrese un numero entero para sumar sus digitos: "))
+        print(sumar_digitos(x))
+        continuar = input("Quiere calcular otro numero? S/N: ".lower())
+        if continuar == "n":
+            break
+        else:
+          print(sumar_digitos(x))
+
+    elegir()
 
 
 def ej0_sumar_valores_de_lista():
