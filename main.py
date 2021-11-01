@@ -86,11 +86,15 @@ def routing(ej):
         print("[7] División entera")
         ej7_division_entera_sin_division()
     elif option == "8":
-        print("[8] EXTRA: Fibonacci")
+        print("[8] EXTRA: Calculo de Fibonacci")
+        ej8_calcular_fibonacci()
     elif option == "9":
         print("[9] EXTRA: Sumar digitos de N")
+        ej9_sumar_digitos()
     elif option == "0":
-        print("[0] EXTRA: Sumar valores de lista")
+        print("[0] EXTRA: Sumar elementos de lista")
+        ej0_sumar_valores_de_lista()
+
     elif option == "a":
         print("[a] map, filter y reduce")
         eja_map_filter_reduce()
@@ -342,7 +346,7 @@ def ej6_comparar_lista():
     else:
         print("las listas son diferentes.")
 
-    #aca tengo que buscarle la vuelta para no repetir codigo.
+
 
 
 def ej7_division_entera_sin_division():
@@ -391,12 +395,31 @@ def ej8_calcular_fibonacci():
     Calcular fibonacci para n terminos con un algoritmo recursivo
     """
     solucion = """
-    Caso BASE: 
-    Caso RECURSIVO:
+    Caso BASE: cuando n = 0, fibonacci es = 0 || cuando n = 1, fibonacci es = 1
+    Caso RECURSIVO: N = (n-1) + (n-2)
     """
     print(enunciado)
     input("Presione [ENTER] para ver la solución...")
     print(solucion)
+
+    while True:
+        def calcular_fibonacci(x):
+            if x == 0:
+                return 0
+            elif x == 1:
+                return 1
+            else:
+                return calcular_fibonacci(x - 1) + calcular_fibonacci(x - 2)
+
+        n = int(input("ingrese un entero para realizar el calculo de Fibonacci: "))
+        print(calcular_fibonacci(n))
+        continuar = input("Quiere calcular otro numero? S/N: ".lower())
+        if continuar == "n":
+            break
+        else:
+            print(calcular_fibonacci(n))
+
+    elegir()
 
 
 def ej9_sumar_digitos():
@@ -404,12 +427,29 @@ def ej9_sumar_digitos():
     Sumar los digitos de un numero entero con un algoritmo recursivo
     """
     solucion = """
-    Caso BASE: 
-    Caso RECURSIVO:
+    Caso BASE: El numero tiene un solo digito (n<10).
+    Caso RECURSIVO: aplicando division y modulo descomponemos el numero, sumamos la unidad obtenida y el resto.
     """
     print(enunciado)
     input("Presione [ENTER] para ver la solución...")
     print(solucion)
+
+    while True:
+        def sumar_digitos(x):
+            if x < 10:
+                return x
+            else:
+                return int(sumar_digitos(x / 10) + sumar_digitos(x % 10))
+
+        x = int(input("ingrese un numero entero para sumar sus digitos: "))
+        print(sumar_digitos(x))
+        continuar = input("Quiere calcular otro numero? S/N: ".lower())
+        if continuar == "n":
+            break
+        else:
+          print(sumar_digitos(x))
+
+    elegir()
 
 
 def ej0_sumar_valores_de_lista():
@@ -417,12 +457,31 @@ def ej0_sumar_valores_de_lista():
     Sumar valores de una lista con un algoritmo recursivo
     """
     solucion = """
-    Caso BASE: 
-    Caso RECURSIVO:
+    Caso BASE: La lista, es una lista vacia.
+    Caso RECURSIVO: sumamos el primer elemento de la lista, con el primer elemento de la lista restante.
     """
     print(enunciado)
     input("Presione [ENTER] para ver la solución...")
     print(solucion)
+
+
+    def sumar_elementos_lista(lista):
+        if lista == []:
+            return 0
+        else:
+            return lista[0] + sumar_elementos_lista(lista[1:])
+
+    print("Ejemplo: sumar_elementos_lista([1,1,1,1])")
+    print(sumar_elementos_lista([1, 1, 1, 1]))
+    print("")
+    input("Presione [ENTER] para ver el sigiuiente ejemplo...\n")
+    print("Ejemplo: sumar_elementos_lista([1,2,3,4,5])")
+    print(sumar_elementos_lista([1,2,3,4,5]))
+    print("")
+    input("Presione [ENTER] para ver el sigiuiente ejemplo...\n")
+    print("Ejemplo: sumar_elementos_lista([7,5,9])")
+    print(sumar_elementos_lista([7,5,9]))
+
 
 
 def eja_map_filter_reduce():
@@ -432,65 +491,83 @@ def eja_map_filter_reduce():
     """
 
     explica_map = """  
-                                           <MAP>
-                                        
-                La funcion MAP se utiliza para modificar secuencias de elementos.
-            map() recibe dos parametros, el primer parametro será una funcion
-            mientras que el segundo será una lista de elementos.
-                    
-                map() aplicara a cada elemento de la lista, la transformacion
-            que ordene la funcion indicada en el primer parametro.
-            Retornando finalmente una lista con los elementos transformados.
-        
-            ejemplo funcion map:
+           + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
+           |                                <MAP>                                  |
+           |                                                                       |
+           |     La funcion MAP se utiliza para modificar secuencias de elementos. |
+           | map() recibe dos parametros, el primer parametro será una funcion     |
+           | mientras que el segundo será una lista de elementos.                  |
+           |                                                                       |
+           |     map() aplicara a cada elemento de la lista, la transformacion     |
+           | que ordene la funcion indicada en el primer parametro.                |
+           | Retornando finalmente una lista con los elementos transformados.      |
+           + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - + 
+           + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - + 
+           | ejemplo funcion map:                                                    |
+           |      funcion = (i * 4) / 2                                              |
+           |     secuencia = [3,15,2,8,12]                                           |
+           |                            retorna                                      |
+           |     map(funcion,secuencia)  ---->    [6,30,4,16,24]     //se modifican  |
+           |                                     los valores orignales de secuencia  |
+           + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
     """
     explica_filter = """  
-                                        <FILTER>
-                                        
-                La función filter() toma una secuencia de elementos y filtara
-            aquellos que cumplan con una determinada condicion que se le indique.
-            La funcion filter a diferencia de map, retorna una lista sin alterar 
-            los elementos originales.        
-            
-                Filter tambien recibe dos parametros, el primero sera
-            una funcion logica, el segundo, una secuencia de elementos.
-        
-            ejemplo funcion filter():
+          
+          + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +  
+          |                                 <FILTER>                                          |
+          |                                                                                   |
+          |      La función filter() toma una secuencia de elementos y filtara                |
+          |  aquellos que cumplan con una determinada condicion que se le indique.            |
+          |  La funcion filter a diferencia de map, retorna una lista sin alterar             |
+          |  los elementos originales.                                                        |
+          |                                                                                   |
+          |      Filter tambien recibe dos parametros, el primero sera                        |
+          |  una funcion logica, el segundo, una secuencia de elementos.                      |
+          |                                                                                   |
+          |  ejemplo funcion filter():                                                        |
+          |      funcion = return i > 20                                                      |
+          |      secuencia = [6,30,4,16,24]                                                   |
+          |                                                                                   | 
+          |      filter(funcion,secuencia)  ---->    [30,24]  // los valores filtrados no se  | 
+          |                                retorna             eliminan de la lista original  |
+          + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +                                
     """
     explica_reduce = """  
-                                        <REDUCE>
-                                        
-                La funcion reduce() tambien recibe dos parametros, una funcion que
-            indique el criterio para comparar los distintos elementos, y en segundo
-            lugar, la secuencia de elementos que es necesario procesar.
-        
-                reduce() efectua una comparacion en base a la funcion que se le indique,
-            tomando en primer instancia a los dos primeros elementos de la secuencia, 
-            el resultado de esa primer ejecucion sera el que se utilizara para comparar con
-            el elemento siguiente den la secuencia.
-                El proceso se repite de forma recurrente y de esta manera es como todos los terminos
-            son evaluados con el fin de obtener un ultimo y unico resultado.
-            
-                                     ---    ---  ||  ---    ---
-                                    | A |  | B | || | C |  | D |
-                                     ---    ---  ||  ---    ---
-                                        \  /          |
-                                         \/           |
-                                        +---+       +---+       ||   +---+
-                                        | A |       | C |       ||   | D |
-                                        +---+       +---+       ||   +---+
-                                            \       /                 /
-                                             \     /                 /
-                                              +---+              +---+           
-                                              | A |              | D |
-                                              +---+              +---+
-                                                    \           /
-                                                     \_________/
-                                                          |
-                                                        +---+
-                                                        | D |
-                                                        +---+
-                                                        
+           + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +   
+           |                                 <REDUCE>                                        | 
+           |                                                                                 |
+           |     La funcion reduce() tambien recibe dos parametros, una funcion que          |
+           | indique el criterio para comparar los distintos elementos, y en segundo         |
+           | lugar, la secuencia de elementos que es necesario procesar.                     |
+           |                                                                                 |  
+           |     reduce() efectua una comparacion en base a la funcion que se le indique,    |
+           | tomando en primer instancia a los dos primeros elementos de la secuencia,       |
+           | el resultado de esa primer ejecucion sera el que se utilizara para comparar con |
+           | el elemento siguiente den la secuencia.                                         |
+           |     El proceso se repite de forma recurrente y de esta manera es como todos los |
+           |     terminos son evaluados con el fin de obtener un ultimo y unico resultado.   |  
+           + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - + 
+           |                    ---    ---  ||  ---    ---                                   |
+           |                   | A |  | B | || | C |  | D |                                  |
+           |                    ---    ---  ||  ---    ---                                   |
+           |                       \  /          |                                           |
+           |                        \/           |                                           |
+           |                       +---+       +---+       ||   +---+                        |
+           |                       | A |       | C |       ||   | D |                        |
+           |                       +---+       +---+       ||   +---+                        |
+           |                           \       /                 /                           | 
+           |                            \     /                 /                            |
+           |                             +---+              +---+                            |
+           |                             | A |              | D |                            |
+           |                             +---+              +---+                            |
+           |                                   \           /                                 |
+           |                                    \_________/                                  |
+           |                                         |                                       |
+           |                                       +---+                                     |
+           |                                       | D |                                     |
+           |                                       +---+                                     |
+           |                                                                                 |
+           + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
     """
 
     print(enunciado)
