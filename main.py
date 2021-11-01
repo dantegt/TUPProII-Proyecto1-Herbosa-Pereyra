@@ -390,6 +390,15 @@ def ej7_division_entera(a, b):
     return 1 + ej7_division_entera(resto, b)
 
 
+def calcular_fibonacci(x):
+            if x == 0:
+                return 0
+            elif x == 1:
+                return 1
+            else:
+                return calcular_fibonacci(x - 1) + calcular_fibonacci(x - 2)
+
+
 def ej8_calcular_fibonacci():
     enunciado = """
     Calcular fibonacci para n terminos con un algoritmo recursivo
@@ -403,23 +412,19 @@ def ej8_calcular_fibonacci():
     print(solucion)
 
     while True:
-        def calcular_fibonacci(x):
-            if x == 0:
-                return 0
-            elif x == 1:
-                return 1
-            else:
-                return calcular_fibonacci(x - 1) + calcular_fibonacci(x - 2)
-
-        n = int(input("ingrese un entero para realizar el calculo de Fibonacci: "))
+        n = int(input("[>] Ingrese un entero para realizar el calculo de Fibonacci: "))
         print(calcular_fibonacci(n))
-        continuar = input("Quiere calcular otro numero? S/N: ".lower())
+        continuar = input("[?] Quiere calcular otro numero? S/N: ".lower())
         if continuar == "n":
             break
-        else:
-            print(calcular_fibonacci(n))
-
     elegir()
+
+
+def sumar_digitos(x):
+            if x < 10:
+                return x
+            else:
+                return int(sumar_digitos(x / 10) + sumar_digitos(x % 10))
 
 
 def ej9_sumar_digitos():
@@ -435,22 +440,18 @@ def ej9_sumar_digitos():
     print(solucion)
 
     while True:
-        def sumar_digitos(x):
-            if x < 10:
-                return x
-            else:
-                return int(sumar_digitos(x / 10) + sumar_digitos(x % 10))
-
-        x = int(input("ingrese un numero entero para sumar sus digitos: "))
+        x = int(input("[>] Ingrese un numero entero para sumar sus digitos: "))
         print(sumar_digitos(x))
-        continuar = input("Quiere calcular otro numero? S/N: ".lower())
+        continuar = input("[?] Quiere calcular otro numero? S/N: ".lower())
         if continuar == "n":
             break
-        else:
-          print(sumar_digitos(x))
-
     elegir()
 
+def sumar_elementos_lista(lista):
+        if lista == []:
+            return 0
+        else:
+            return lista[0] + sumar_elementos_lista(lista[1:])
 
 def ej0_sumar_valores_de_lista():
     enunciado = """
@@ -464,13 +465,6 @@ def ej0_sumar_valores_de_lista():
     input("Presione [ENTER] para ver la solución...")
     print(solucion)
 
-
-    def sumar_elementos_lista(lista):
-        if lista == []:
-            return 0
-        else:
-            return lista[0] + sumar_elementos_lista(lista[1:])
-
     print("Ejemplo: sumar_elementos_lista([1,1,1,1])")
     print(sumar_elementos_lista([1, 1, 1, 1]))
     print("")
@@ -481,7 +475,7 @@ def ej0_sumar_valores_de_lista():
     input("Presione [ENTER] para ver el sigiuiente ejemplo...\n")
     print("Ejemplo: sumar_elementos_lista([7,5,9])")
     print(sumar_elementos_lista([7,5,9]))
-
+    elegir()
 
 
 def eja_map_filter_reduce():
