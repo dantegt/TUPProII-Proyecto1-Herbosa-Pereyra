@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+     <estaciones>
+         <nombre>Sur10</nombre>
+         <latitud>-38.64080903475401</latitud>
+         <longitud>-62.2143162256758</longitud>
+         <bateria>99,98,93,88,87,85,84,78,75,72,65,64,63,62,59,58,57,56,53,51</bateria>
+         <sensores>
+            <sensor>
+                <nombre>Humedad</nombre>
+                <valor>99</valor>
+                <unidad>%</unidad>
+            </sensor>
+            <sensor>
+                <nombre>Dirección del viento</nombre>
+                <valor>NE</valor>
+                <unidad></unidad>
+            </sensor>
+            <sensor>
+                <nombre>Velocidad del viento</nombre>
+                <valor>99</valor>
+                <unidad>km/h</unidad>
+            </sensor>
+            <sensor>
+                <nombre>Temperatura</nombre>
+                <valor>23</valor>
+                <unidad>°C</unidad>
+            </sensor>
+            <sensor>
+                <nombre>Presión atmosférica</nombre>
+                <valor>1003</valor>
+                <unidad>hpa</unidad>
+            </sensor>
+         </sensores>
+     </estaciones>
+     <estaciones>
+         <nombre>Norte7</nombre>
+         <latitud>-38.64080903475401</latitud>
+         <longitud>-62.2143162256758</longitud>
+         <bateria>69,68,65,64,63,62,61,60,59,58,55,54,53,52,50,45,44,43,41,40</bateria>
+         <sensores>
+            <sensor>
+                <nombre>Dirección del viento</nombre>
+                <valor>NE</valor>
+                <unidad></unidad>
+            </sensor>
+            <sensor>
+                <nombre>Velocidad del viento</nombre>
+                <valor>12</valor>
+                <unidad>km/h</unidad>
+            </sensor>
+         </sensores>
+     </estaciones>
+     <estaciones>
+         <nombre>Bahia1</nombre>
+         <latitud>-38.71613557738244</latitud>
+         <longitud>-62.265876848091445</longitud>
+         <bateria>69,68,65,64,63,62,61,60,59,58,55,54,53,52,50,45,44,43,41,40</bateria>
+         <sensores>
+            <sensor>
+                <nombre>Dirección del viento</nombre>
+                <valor>NE</valor>
+                <unidad></unidad>
+            </sensor>
+            <sensor>
+                <nombre>Velocidad del viento</nombre>
+                <valor>10</valor>
+                <unidad>km/h</unidad>
+            </sensor>
+            <sensor>
+                <nombre>Temperatura</nombre>
+                <valor>25</valor>
+                <unidad>°C</unidad>
+            </sensor>
+         </sensores>
+     </estaciones>
+     <estaciones>
+         <nombre>Cholo8</nombre>
+         <latitud>-38.711777389504306</latitud>
+         <longitud>-62.33018215476225</longitud>
+         <bateria>69,68,67,66,64,61,59,55,40,32,30,26,23,19,18,15,11,7,5,0</bateria>
+         <sensores>
+            <sensor>
+                <nombre>Dirección del viento</nombre>
+                <valor>SE</valor>
+                <unidad></unidad>
+            </sensor>
+            <sensor>
+                <nombre>Velocidad del viento</nombre>
+                <valor>14</valor>
+                <unidad>km/h</unidad>
+            </sensor>
+         </sensores>
+     </estaciones>
+     <estaciones>
+         <nombre>Coraza9</nombre>
+         <latitud>-38.64080903475401</latitud>
+         <longitud>-62.2143162256758</longitud>
+         <bateria>99,98,93,88,87,85,84,78,75,72,65,64,63,62,59,58,57,56,53,51</bateria>
+         <sensores>
+            <sensor>
+                <nombre>Humedad</nombre>
+                <valor>56</valor>
+                <unidad>%</unidad>
+            </sensor>
+            <sensor>
+                <nombre>Dirección del viento</nombre>
+                <valor>NE</valor>
+                <unidad></unidad>
+            </sensor>
+            <sensor>
+                <nombre>Velocidad del viento</nombre>
+                <valor>10</valor>
+                <unidad>km/h</unidad>
+            </sensor>
+            <sensor>
+                <nombre>Temperatura</nombre>
+                <valor>23</valor>
+                <unidad>°C</unidad>
+            </sensor>
+            <sensor>
+                <nombre>Presión atmosférica</nombre>
+                <valor>1003</valor>
+                <unidad>hpa</unidad>
+            </sensor>
+         </sensores>
+     </estaciones>
+     <estaciones>
+         <nombre>Camino4</nombre>
+         <latitud>-38.67902006363121</latitud>
+         <longitud>-62.23383389809851</longitud>
+         <bateria>69,68,66,65,60,53,52,51,50,40,38,37,36,31,29,28,24,23,21,20</bateria>
+         <sensores>
+            <sensor>
+                <nombre>Temperatura</nombre>
+                <valor>22</valor>
+                <unidad>°C</unidad>
+            </sensor>
+         </sensores>
+     </estaciones>
+     <estaciones>
+         <nombre>Piedra5</nombre>
+         <latitud>-38.64080903475401</latitud>
+         <longitud>-62.2143162256758</longitud>
+         <bateria>99,98,93,88,87,85,84,78,75,72,65,64,63,62,59,58,57,56,43,41</bateria>
+         <sensores>
+            <sensor>
+                <nombre>Dirección del viento</nombre>
+                <valor>NE</valor>
+                <unidad></unidad>
+            </sensor>
+            <sensor>
+                <nombre>Velocidad del viento</nombre>
+                <valor>99</valor>
+                <unidad>km/h</unidad>
+            </sensor>
+            <sensor>
+                <nombre>Temperatura</nombre>
+                <valor>20</valor>
+                <unidad>°C</unidad>
+            </sensor>
+         </sensores>
+     </estaciones>
+     <estaciones>
+         <nombre>Rural2</nombre>
+         <latitud>-38.59629697264291</latitud>
+         <longitud>-62.38304660332429</longitud>
+         <bateria>99,98,93,88,87,85,84,78,75,72,65,64,63,62,59,58,57,56,53,51</bateria>
+         <sensores>
+            <sensor>
+                <nombre>Temperatura</nombre>
+                <valor>20</valor>
+                <unidad>°C</unidad>
+            </sensor>
+            <sensor>
+                <nombre>Presión atmosférica</nombre>
+                <valor>1003</valor>
+                <unidad>hpa</unidad>
+            </sensor>
+         </sensores>
+     </estaciones>
+</root>

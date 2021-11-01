@@ -3,9 +3,10 @@
 
 import re
 import random
+import json
+import xml.etree.cElementTree as ET
 from os import system, name
 from time import sleep
-
 
 def clear():
     # Windows
@@ -576,42 +577,162 @@ def ejc_estaciones_meteorologicas():
     Elija solo una representación (XML o JSON) para implementar las soluciones de 1 y 2.
     Opcional: Implemente la solución utilizando la representación restante.
     """
+
+    # Carga DB JSON
+    with open('estaciones.json', encoding='utf-8') as file_json:
+        db_json = json.load(file_json)
+
+    # Carga DB XML
+    file_xml = ET.parse("estaciones.xml")
+    db_xml = file_xml.getroot()
+
     print(enunciado)
     input("Presione [ENTER] para ver la continuar...")
     print(submenu)
 
     while True:
         # Elige un formato de base de datos
-        option = input("[>] Que formato quiere usar? [j] JSON [x] XML - [s] salir: ")
-        if option == "j":
+        formato = input("[>] Que formato quiere usar? [j] JSON [x] XML - [s] salir: ")
+        if formato == "j":
             print("[j] Ver JSON\n")
-            formato = "JSON"
-        elif option == "x":
+            fname = "JSON"
+        elif formato == "x":
             print("[x] Ver XML\n")
-            formato = "XML"
-        elif option == "s":
-            print("[s] Saliendo de Estaciones Meteorologicas...\n")
+            fname = "XML"
+        elif formato == "s":
+            print("[s] Saliendo de Estaciones Meteorologicas...")
             break
         else:
             print("[!] ERROR: Ingrese una opcion valida!\n")
         
-        if option == "j" or option == "x":
+        if formato == "j" or formato == "x":
             # Elegir accion
             while True:
-                action = input("[>] [{formato}] Que desea hacer? [1] Buscar estacion [2] Ver Bateria [3] Ver Base - [s] salir: ".format(formato=formato))
-                if action == "1":
-                    print("[1] [{formato}] Buscar Estacion\n".format(formato=formato))
-                elif action == "2":
-                    print("[2] [{formato}] Ver Estación con menos Batería\n".format(formato=formato))
-                elif action == "3":
-                    print("[3] [{formato}] Ver Base de Datos\n".format(formato=formato))
-                elif action == "s":
-                    print("[s] [{formato}] Saliendo de acciones\n".format(formato=formato))
+                action = input("[>] [{fname}] Que desea hacer? [1] Buscar estacion [2] Ver Bateria [3] Ver Base - [s] salir: ".format(fname=fname))
+                if action == "1" and formato == "j":
+                    print("[1] [JSON] Buscar Estacion\n")
+                    print(enunciado1)
+                    ejc1_extra_listado_estaciones(formato, db_json)
+                    ejc1_buscar_estacion(formato, db_json)
+                elif action == "2" and formato == "j":
+                    print("[2] [JSON] Ver Estación con menos Batería\n")
+                    print(enunciado2)
+                    ejc2_ver_bateria(formato, db_json)
+                elif action == "3" and formato == "j":
+                    print("[3] [JSON] Ver Base de Datos\n")
+                    print(db_json)
+                elif action == "s" and formato == "j":
+                    print("[s] [JSON] Saliendo de acciones\n")
+                    break
+                elif action == "1" and formato == "x":
+                    print("[1] [XML] Buscar Estacion\n")
+                    print(enunciado1)
+                    ejc1_extra_listado_estaciones(formato, db_xml)
+                    ejc1_buscar_estacion(formato, db_xml)
+                elif action == "2" and formato == "x":
+                    print("[2] [XML] Ver Estación con menos Batería\n")
+                    print(enunciado2)
+                    ejc2_ver_bateria(formato, db_xml)
+                elif action == "3" and formato == "x":
+                    print("[3] [XML] Ver Base de Datos\n")
+                    with open("estaciones.xml", 'r', encoding="utf-8") as f:
+                        print(f.read())
+                elif action == "s" and formato == "x":
+                    print("[s] [XML] Saliendo de acciones\n")
                     break
                 else:
                     print("[!] ERROR: Ingrese una opcion valida!\n")
     elegir()
 
+
+def ejc1_buscar_estacion(formato, db):
+    # buscar estacion en base al nombre
+    nombre = input("[>] Ingrese el nombre de la estacion: ")
+
+    # Formato JSON
+    if formato == "j":
+        match = []
+        estaciones = db["estaciones"]
+        for estacion in db["estaciones"]:
+            if nombre == estacion["nombre"]:
+                match = estacion
+        if not match:
+            print("[!] ERROR: No se encontró una estación con el nombre {nombre}".format(nombre=nombre))
+        else:
+            cantidad_sensores = len(match["sensores"])
+            print("\n\tEstación {nombre}\t\t\tSensores: {cantidad_sensores}".format(nombre=nombre, cantidad_sensores=cantidad_sensores))
+            print("\t------------------------------------------------")
+            for sensor in match["sensores"]:
+                print("\t\t{nombre}: {valor} {unidad}".format(nombre=sensor["nombre"], valor=sensor["valor"], unidad=sensor["unidad"]))
+            print("\t------------------------------------------------\n")
+    # Formato XML
+    elif formato == "x":
+        estaciones = db.findall("estaciones")
+        for estacion in estaciones:
+            if nombre == estacion.find("nombre").text:
+                match = estacion
+        if not match:
+            print("[!] ERROR: No se encontró una estación con el nombre {nombre}".format(nombre=nombre))
+        else:
+            cantidad_sensores = len(match.findall("sensores/sensor"))
+            print("\n\tEstación {nombre}\t\t\tSensores: {cantidad_sensores}".format(nombre=nombre, cantidad_sensores=cantidad_sensores))
+            print("\t------------------------------------------------")
+            for sensor in match.findall("sensores/sensor"):
+                nombre = sensor.find("nombre").text
+                valor = sensor.find("valor").text
+                unidad = sensor.find("unidad").text
+                print("\t\t{nombre}: {valor} {unidad}".format(nombre=nombre, valor=valor, unidad=unidad))
+            print("\t------------------------------------------------\n")
+
+def ejc1_extra_listado_estaciones(formato, db):
+    print("\tListado de Estaciones:")
+    print("\t----------------------------")
+    # Formato JSON
+    if formato == "j":
+        estaciones = db["estaciones"]
+        for estacion in db["estaciones"]:
+            print("\t" + estacion["nombre"])        
+    # Formato XML
+    else:
+        estaciones = db.findall("estaciones")
+        for estacion in estaciones:
+            print("\t" + estacion.find("nombre").text)
+
+    print("\t----------------------------")
+
+
+def ejc2_ver_bateria(formato, db):
+    # retorna estación con menor promedio de batería
+    menor_promedio = 100
+    menor_nombre = ''
+    if formato == "j":
+        # Formato JSON
+        estaciones = db["estaciones"]
+        for estacion in estaciones:
+            bateria = estacion["bateria"]
+            nombre = estacion["nombre"]
+            promedio = sum(bateria) / len(bateria)
+            if promedio < menor_promedio:
+                menor_promedio = promedio
+                menor_nombre = nombre
+    elif formato == "x":
+        # Formato XML
+        estaciones = db.findall("estaciones")
+        for estacion in estaciones:
+            nombre = estacion.find("nombre").text
+            str_bateria = estacion.find("bateria").text
+
+            list_bateria = str_bateria.split(',')
+            bateria = [int(n) for n in list_bateria]
+            promedio = sum(bateria) / len(bateria)
+            if promedio < menor_promedio:
+                menor_promedio = promedio
+                menor_nombre = nombre
+    
+    if not menor_nombre:
+        print("[!] ERROR: No se encontró la estación con menor promedio de bateria\n")
+    else:
+        print("[-] Bateria: La estación {nombre} es la que menor batería tiene con un promedio de {promedio}\n".format(nombre=nombre, promedio=promedio))
 
 # ----------------------------------------------------
 # Programa principal
