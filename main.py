@@ -718,7 +718,7 @@ def ejc_estaciones_meteorologicas():
 
 def ejc1_buscar_estacion(formato, db):
     # buscar estacion en base al nombre
-    nombre = input("[>] Ingrese el nombre de la estacion: ")
+    nombre = input("[>] Ingrese el nombre de la estacion: ").capitalize()
 
     # Formato JSON
     if formato == "j":
